@@ -1,5 +1,6 @@
+from api.errors.blog_post_errors import PostAllreadyExists, PostNotFoundError
 from typing import Dict, List, Optional
-from api.models.blog_post import BlogPost
+from api.models.blog_post_models import BlogPost
 
 db: Dict[int, BlogPost] = {}
 
@@ -9,13 +10,13 @@ class BlogPostService():
     
     def create_blog_post(self, blog_post:BlogPost) -> BlogPost:
         if blog_post.post_id in db:
-            raise ValueError(f"Blog post with id {blog_post.post_id} already exists")
+            raise PostAllreadyExists(f"Blog post with id {blog_post.post_id} already exists")
         db[blog_post.post_id] = blog_post
         return blog_post
     
     def delete_blog_post(self, post_id:int) -> int:
         if post_id not in db:
-            raise ValueError(f"Blog post with id {post_id} does not exist")
+            raise PostNotFoundError(f"Blog post with id {post_id} does not exist")
         db.pop(post_id) 
         return post_id
     
