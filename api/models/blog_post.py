@@ -11,7 +11,7 @@ class BlogPost(BaseModel):
         author: str
         created_at: datetime
     """
-    post_id: int
+    post_id: int 
     title: str
     content: str
     author: str
