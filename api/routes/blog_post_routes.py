@@ -15,7 +15,7 @@ def update_blog_post(post_id: int, blog_post: BlogPostUpdate):
     return blog_post_service.update_blog_post(post_id, blog_post)
 
 @router.patch("/blog_posts/{post_id}", status_code=200)
-def update_blog_post(post_id: int, blog_post: BlogPostPatch):
+def patch_blog_post(post_id: int, blog_post: BlogPostPatch):
     return blog_post_service.patch_blog_post(post_id, blog_post)
 
 @router.delete("/blog_posts/{post_id}", status_code=204)
