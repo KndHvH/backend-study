@@ -1,7 +1,7 @@
 from fastapi import APIRouter
-from api.models.blog_post_models import BlogPostCreate, BlogPostUpdate, BlogPostPatch
-from api.services.blog_post_services import BlogPostService
 
+from api.models.blog_post_models import BlogPostCreate, BlogPostPatch, BlogPostUpdate
+from api.services.blog_post_services import BlogPostService
 
 router = APIRouter()
 blog_post_service = BlogPostService()

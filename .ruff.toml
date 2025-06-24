@@ -1,0 +1,12 @@
+line-length = 110
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "I", "B", "UP"]
+extend-select = ["N", "SIM", "A", "DTZ"]
+fixable = ["ALL"]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false

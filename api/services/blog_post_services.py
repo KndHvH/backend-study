@@ -1,8 +1,9 @@
-from typing import List, Optional
-from api.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostUpdate, BlogPostPatch
+
+from api.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
 from api.repository.blog_post_repository import BlogPostRepository
 
-class BlogPostService():
+
+class BlogPostService:
     def __init__(self) -> None:
         self.repository = BlogPostRepository()
     
@@ -18,8 +19,8 @@ class BlogPostService():
     def delete_blog_post(self, post_id:int) -> int:
         return self.repository.delete_blog_post(post_id)
     
-    def get_blog_post(self, post_id:int) -> Optional[BlogPost]:
+    def get_blog_post(self, post_id:int) -> BlogPost | None:
         return self.repository.get_blog_post(post_id)
     
-    def get_all_blog_posts(self) -> List[BlogPost]:
+    def get_all_blog_posts(self) -> list[BlogPost]:
         return self.repository.get_all_blog_posts()

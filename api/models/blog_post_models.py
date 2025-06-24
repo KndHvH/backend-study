@@ -1,6 +1,6 @@
-from typing import Optional
 from datetime import datetime
 from itertools import combinations
+
 from pydantic import BaseModel, field_validator, model_validator
 
 
@@ -22,7 +22,7 @@ class BlogPostBaseModel(BaseModel):
         if value is None:
             return value
         if len(value) < 3 or len(value) > 100 or not value.strip(): 
-            raise ValueError(f"Field must be a non-empty string between 3 and 100 characters")
+            raise ValueError("Field must be a non-empty string between 3 and 100 characters")
         return value
     
     @model_validator(mode='after')
@@ -85,6 +85,6 @@ class BlogPostPatch(BlogPostBaseModel):
         author: Optional[str]
 
     """
-    title: Optional[str] = None
-    content: Optional[str] = None
-    author: Optional[str] = None
+    title: str | None = None
+    content: str | None = None
+    author: str | None = None

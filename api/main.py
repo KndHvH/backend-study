@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-from api.routes import blog_post_routes, root
+
 from api.errors.blog_post_errors import PostError
 from api.errors.blog_post_handlers import post_error_handler
+from api.routes import blog_post_routes, root
 
 app = FastAPI()
 
