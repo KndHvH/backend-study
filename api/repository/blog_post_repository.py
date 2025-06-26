@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import UTC, datetime
 
 from api.errors.blog_post_errors import PostNotFoundError
 from api.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
@@ -12,7 +12,7 @@ class BlogPostRepository:
         return max(list(self.db.keys())) + 1 if self.db != {} else 1
     
     def _get_current_datetime(self) -> datetime:
-        return datetime.now(datetime.utc)
+        return datetime.now(UTC)
     
     def create_blog_post(self, blog_post: BlogPostCreate) -> BlogPost:   
         blog_post = BlogPost(

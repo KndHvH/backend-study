@@ -1,6 +1,6 @@
-
 from api.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
 from api.repository.blog_post_repository import BlogPostRepository
+from core.logger import app_logger
 
 
 class BlogPostService:
@@ -8,19 +8,31 @@ class BlogPostService:
         self.repository = BlogPostRepository()
     
     def create_blog_post(self, blog_post:BlogPostCreate) -> BlogPost:       
-        return self.repository.create_blog_post(blog_post)
+        post = self.repository.create_blog_post(blog_post)
+        app_logger.info(f"Blog post created: id={post.post_id}, title='{post.title}', author='{post.author}'")
+        return post
     
     def update_blog_post(self, post_id:int, blog_post:BlogPostUpdate) -> BlogPost:
-        return self.repository.update_blog_post(post_id, blog_post)
+        post = self.repository.update_blog_post(post_id, blog_post)
+        app_logger.info(f"Blog post updated: id={post.post_id}, title='{post.title}', author='{post.author}'")
+        return post
     
     def patch_blog_post(self, post_id:int, blog_post:BlogPostPatch) -> BlogPost:
-        return self.repository.patch_blog_post(post_id, blog_post)
+        post = self.repository.patch_blog_post(post_id, blog_post)
+        app_logger.info(f"Blog post patched: id={post.post_id}, title='{post.title}', author='{post.author}'")
+        return post
         
     def delete_blog_post(self, post_id:int) -> int:
-        return self.repository.delete_blog_post(post_id)
+        self.repository.delete_blog_post(post_id)
+        app_logger.info(f"Blog post deleted: id={post_id}")
+        return post_id
     
     def get_blog_post(self, post_id:int) -> BlogPost | None:
-        return self.repository.get_blog_post(post_id)
+        post = self.repository.get_blog_post(post_id)
+        app_logger.info(f"Blog post retrieved: id={post.post_id}, title='{post.title}', author='{post.author}'")
+        return post
     
     def get_all_blog_posts(self) -> list[BlogPost]:
-        return self.repository.get_all_blog_posts()
+        posts = self.repository.get_all_blog_posts()
+        app_logger.info(f"All blog posts retrieved: {len(posts)} posts")
+        return posts
