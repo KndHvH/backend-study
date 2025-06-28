@@ -12,22 +12,22 @@ def setup_error_handlers(app: FastAPI):
     app.add_exception_handler(Exception, unhandled_exception_handler)
 
 async def post_error_handler(request: Request, exc: PostError):
-    app_logger.warning(f"Post error at {request.url.path}: {exc.message}")
+    app_logger.warning(f"Post error at {request.url.path}: '{exc.message}'")
     return JSONResponse(
         status_code=exc.status_code,
         content=exc.as_response()
     )
     
 async def validation_error_handler(request: Request, exc: RequestValidationError):
-    app_logger.warning(f"Validation error at {request.url.path}: {str(exc.errors())}")
+    app_logger.warning(f"Validation error at {request.url.path}: '{str(exc.errors()[0]["msg"])}'")
     return JSONResponse(
         status_code=422,
-        content={"detail": str(exc.errors())},
+        content={"detail": str(exc.errors()[0]["msg"])},
     )
     
     
 async def unhandled_exception_handler(request: Request, exc: Exception):
-    app_logger.exception(f"Unhandled exception at {request.url.path}: {exc}")
+    app_logger.exception(f"Unhandled exception at {request.url.path}: {str(exc)}")
     return JSONResponse(
         status_code=500,
         content={"detail": "Internal Server Error"},

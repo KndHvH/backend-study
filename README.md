@@ -1,2 +1,2 @@
 uv run uvicorn api.main:app --reload
-uv run ruff .
+uv run ruff check . --fix
