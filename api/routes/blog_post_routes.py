@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from api.models.blog_post_models import BlogPostCreate, BlogPostPatch, BlogPostUpdate, BlogPost
+from api.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
 from api.models.response_models import ResponseModel
 from api.services.blog_post_services import BlogPostService
 from core.logger import app_logger
