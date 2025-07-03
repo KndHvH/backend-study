@@ -23,8 +23,8 @@ async def log_request_data(request: Request, call_next):
     path = request.url.path
     status = response.status_code
     
-    app_logger.info(
-		f"{ip} - {method} {path} → {status} | {duration:.2f}s"
-	)
+    message = f"{ip:12} {method:6} {path:24} → {status:3} | {duration:4.2f}s | [ID:{request_id}] | "
+
+    app_logger.info(message)
 
     return response
