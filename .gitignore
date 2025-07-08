@@ -193,4 +193,4 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 uv.lock
-tests/result.txt
+logs/cov.txt

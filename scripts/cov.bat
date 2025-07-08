@@ -1,2 +1,2 @@
 @echo off
-uv run pytest --cov=api --cov-report=term-missing > tests/result.txt
+uv run pytest --cov=api --cov-report=term-missing > logs/cov.txt
