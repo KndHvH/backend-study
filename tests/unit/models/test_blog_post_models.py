@@ -1,0 +1,46 @@
+import pytest
+
+from api.models.blog_post_models import BlogPostBaseModel
+
+
+class TestBlogPostBaseModel:
+    def test_class_import_and_instantiation(self):
+        assert BlogPostBaseModel is not None
+        model = BlogPostBaseModel(title="title", content="content", author="author")
+        assert model.title == "title"
+        assert model.content == "content"
+        assert model.author == "author"
+    
+    def test_validate_fields(self):
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="", content="content", author="author")
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="title", content="", author="author")
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="title", content="content", author="")
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="title", content="aa", author="author")
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="aa", content="content", author="author")
+        with pytest.raises(ValueError):
+            title = "a" * 101
+            BlogPostBaseModel(title=title, content="content", author="author")
+        with pytest.raises(ValueError):
+            content = "a" * 1001
+            BlogPostBaseModel(title="title", content=content, author="author")
+        with pytest.raises(ValueError):
+            author = "a" * 101
+            BlogPostBaseModel(title="title", content="content", author=author)
+
+    def test_validate_fields_with_none_value(self):
+        result = BlogPostBaseModel.validate_fields(None)
+        assert result is None
+
+    def test_validate_model(self):
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="title", content="title", author="author")
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="title", content="content", author="title")
+        with pytest.raises(ValueError):
+            BlogPostBaseModel(title="title", content="content", author="content")
+            
