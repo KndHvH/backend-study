@@ -194,3 +194,4 @@ cython_debug/
 .cursorindexingignore
 uv.lock
 logs/cov.txt
+core/database/data.db
