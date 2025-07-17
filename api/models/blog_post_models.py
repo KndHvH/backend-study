@@ -16,13 +16,22 @@ class BlogPostBaseModel(BaseModel):
     content: str
     author: str
     
-    @field_validator('title', 'content', 'author')
+    @field_validator('title', 'author')
     @classmethod
-    def validate_fields(cls, value: str | None) -> str:
+    def validate_title_author(cls, value: str | None) -> str:
         if value is None:
             return value
         if len(value) < 3 or len(value) > 100 or not value.strip(): 
             raise ValueError("Field must be a non-empty string between 3 and 100 characters")
+        return value
+    
+    @field_validator('content')
+    @classmethod
+    def validate_content(cls, value: str | None) -> str:
+        if value is None:
+            return value
+        if len(value) < 3 or len(value) > 1000 or not value.strip(): 
+            raise ValueError("Content must be a non-empty string between 3 and 1000 characters")
         return value
     
     @model_validator(mode='after')

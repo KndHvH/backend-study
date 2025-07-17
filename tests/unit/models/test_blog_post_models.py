@@ -1,6 +1,6 @@
 import pytest
 
-from api.models.blog_post_models import BlogPostBaseModel
+from api.models.blog_post_models import BlogPostBaseModel, BlogPostPatch
 
 
 class TestBlogPostBaseModel:
@@ -33,8 +33,17 @@ class TestBlogPostBaseModel:
             BlogPostBaseModel(title="title", content="content", author=author)
 
     def test_validate_fields_with_none_value(self):
-        result = BlogPostBaseModel.validate_fields(None)
-        assert result is None
+        # Testa o comportamento com valores None usando BlogPostPatch
+        patch_model = BlogPostPatch()
+        assert patch_model.title is None
+        assert patch_model.content is None
+        assert patch_model.author is None
+        
+        # Testa com alguns campos None e outros preenchidos
+        partial_model = BlogPostPatch(title="título teste", content=None, author="autor teste")
+        assert partial_model.title == "título teste"
+        assert partial_model.content is None
+        assert partial_model.author == "autor teste"
 
     def test_validate_model(self):
         with pytest.raises(ValueError):
