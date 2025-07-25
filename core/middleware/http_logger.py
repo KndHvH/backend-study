@@ -25,6 +25,10 @@ async def log_request_data(request: Request, call_next):
     
     message = f"{ip:12} {method:6} {path:24} → {status:3} | {duration:4.2f}s | [ID:{request_id}] | "
 
-    app_logger.info(message)
+    # Não logar durante os testes
+    import os
+    current_env = os.getenv("ENVIRONMENT", "dev")
+    if current_env != "test":
+        app_logger.info(message)
 
     return response

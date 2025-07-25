@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from api.errors.blog_post_handlers import setup_error_handlers
-from api.routes import blog_post_routes, root
+from api.domains.blog_post.errors.blog_post_handlers import setup_error_handlers
+from api.domains.blog_post.routes import blog_post_routes, root
 from core.middleware.http_logger import log_request_data
 
 app = FastAPI()

@@ -1,0 +1,75 @@
+Fase 1
+
+    Setup do projeto e estrutura inicial
+
+    FastAPI básico: rotas, modelos e validação
+
+    Estrutura em camadas: router, service, repository
+
+    Models Pydantic vs Entidades
+
+    Middleware HTTP customizado (log de requisições)
+
+    Tratamento de erros com handlers
+
+    Logger com Loguru
+
+    ResponseModel padronizado
+
+    Criação do repositório em memória
+
+    Criação de serviços e integração com rotas
+
+    Testes unitários (pytest + factories)
+
+    Cobertura com pytest-cov
+
+    Testes de integração (com repositório fake)
+
+    Simulação de erros e handlers 500
+
+    Configuração de banco real (SQLite com SQLAlchemy)
+
+Fase 2
+
+    Refatoração do repositório para SQLAlchemy
+
+    Fixtures e testes com SQLite em memória
+
+    Separação por domínio com entidades próprias
+
+    Introdução a DDD (Domain-Driven Design)
+
+    Injeção de dependência manual (sem framework)
+
+    Criação de interfaces para os repositórios
+
+    Testes usando repositório mockado (interface)
+
+    CRUD com transações e rollback
+
+    Modularização de settings (dev/prod/test)
+
+    Introdução ao Docker para ambiente isolado
+
+Fase 3
+
+    Introdução ao Alembic (migrations)
+
+    Criação de usuários com hash de senha
+
+    Login com JWT
+
+    Rotas protegidas com dependências
+
+    Versionamento de API
+
+    Organização de domínio por módulos
+
+    Redis e cache básico
+
+    Background tasks e filas (Celery ou FastAPI background)
+
+    Webhooks e notificações simuladas
+
+    Observabilidade (log extra, trace, request_id)

@@ -1,6 +1,7 @@
 import contextlib
 import os
 import tempfile
+import time
 
 import pytest
 from fastapi.testclient import TestClient
@@ -18,7 +19,9 @@ def test_client():
         tmp_file_name = tmp_file.name
     
     original_db_path = os.environ.get("DB_PATH")
+    original_environment = os.environ.get("ENVIRONMENT")
     os.environ["DB_PATH"] = test_db_path
+    os.environ["ENVIRONMENT"] = "test"
     
 
     test_engine = create_engine(test_db_path, connect_args={"check_same_thread": False})
@@ -34,6 +37,11 @@ def test_client():
         os.environ["DB_PATH"] = original_db_path
     else:
         os.environ.pop("DB_PATH", None)
+    
+    if original_environment:
+        os.environ["ENVIRONMENT"] = original_environment
+    else:
+        os.environ.pop("ENVIRONMENT", None)
     
     for _ in range(3):
         try:

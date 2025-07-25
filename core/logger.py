@@ -30,11 +30,13 @@ class Logger:
     def _configure_logger(self):
         self.logger.remove()
 
-        self.logger.add(
-            sys.stdout,
-            level="INFO",
-            format=self._get_log_format(),
-        )
+        # Não exibir logs no stdout durante os testes
+        if settings.environment != "test":
+            self.logger.add(
+                sys.stdout,
+                level="INFO",
+                format=self._get_log_format(),
+            )
 
         self.logger.add(
             f"{self.dir_name}/info.log",
