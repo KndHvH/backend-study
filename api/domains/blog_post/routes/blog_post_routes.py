@@ -13,8 +13,8 @@ router = APIRouter()
 
 @app_logger.catch(level="ERROR")
 @router.post("/blog_posts", status_code=201, response_model=ResponseModel[BlogPost])
-def create_blog_post(blog_post: BlogPostCreate, db: Annotated[Session, Depends(get_db)]):
-    blog_post_service = BlogPostService(db)
+def create_blog_post(blog_post: BlogPostCreate, session: Annotated[Session, Depends(get_db)]):
+    blog_post_service = BlogPostService(session=session)
     return ResponseModel(
         success=True, 
         message="Blog post created successfully", 
@@ -23,8 +23,8 @@ def create_blog_post(blog_post: BlogPostCreate, db: Annotated[Session, Depends(g
 
 @app_logger.catch(level="ERROR")
 @router.put("/blog_posts/{post_id}", status_code=200, response_model=ResponseModel[BlogPost])
-def update_blog_post(post_id: int, blog_post: BlogPostUpdate, db: Annotated[Session, Depends(get_db)]):
-    blog_post_service = BlogPostService(db)
+def update_blog_post(post_id: int, blog_post: BlogPostUpdate, session: Annotated[Session, Depends(get_db)]):
+    blog_post_service = BlogPostService(session=session)
     return ResponseModel(
         success=True, 
         message="Blog post updated successfully", 
@@ -33,8 +33,8 @@ def update_blog_post(post_id: int, blog_post: BlogPostUpdate, db: Annotated[Sess
 
 @app_logger.catch(level="ERROR")
 @router.patch("/blog_posts/{post_id}", status_code=200, response_model=ResponseModel[BlogPost])
-def patch_blog_post(post_id: int, blog_post: BlogPostPatch, db: Annotated[Session, Depends(get_db)]):
-    blog_post_service = BlogPostService(db)
+def patch_blog_post(post_id: int, blog_post: BlogPostPatch, session: Annotated[Session, Depends(get_db)]):
+    blog_post_service = BlogPostService(session=session)
     return ResponseModel(
         success=True, 
         message="Blog post patched successfully", 
@@ -43,14 +43,14 @@ def patch_blog_post(post_id: int, blog_post: BlogPostPatch, db: Annotated[Sessio
 
 @app_logger.catch(level="ERROR")
 @router.delete("/blog_posts/{post_id}", status_code=204)
-def delete_blog_post(post_id: int, db: Annotated[Session, Depends(get_db)]):
-    blog_post_service = BlogPostService(db)
+def delete_blog_post(post_id: int, session: Annotated[Session, Depends(get_db)]):
+    blog_post_service = BlogPostService(session=session)
     blog_post_service.delete_blog_post(post_id)
 
 @app_logger.catch(level="ERROR")
 @router.get("/blog_posts/{post_id}", status_code=200, response_model=ResponseModel[BlogPost])
-def get_blog_post(post_id: int, db: Annotated[Session, Depends(get_db)]):
-    blog_post_service = BlogPostService(db)
+def get_blog_post(post_id: int, session: Annotated[Session, Depends(get_db)]):
+    blog_post_service = BlogPostService(session=session)
     return ResponseModel(
         success=True, 
         message="Blog post retrieved successfully", 
@@ -59,8 +59,8 @@ def get_blog_post(post_id: int, db: Annotated[Session, Depends(get_db)]):
     
 @app_logger.catch(level="ERROR")
 @router.get("/blog_posts", status_code=200, response_model=ResponseModel[list[BlogPost]])
-def get_all_blog_posts(db: Annotated[Session, Depends(get_db)]):
-    blog_post_service = BlogPostService(db)
+def get_all_blog_posts(session: Annotated[Session, Depends(get_db)]):
+    blog_post_service = BlogPostService(session=session)
     return ResponseModel(
         success=True, 
         message="All blog posts retrieved successfully", 

@@ -7,7 +7,7 @@ from core.logger import app_logger
 
 class BlogPostService:
     def __init__(self, session: Session) -> None:
-        self.repository = BlogPostRepository(session)
+        self.repository = BlogPostRepository(session=session)
     
     def create_blog_post(self, blog_post:BlogPostCreate) -> BlogPost:       
         post = self.repository.create_blog_post(blog_post)
