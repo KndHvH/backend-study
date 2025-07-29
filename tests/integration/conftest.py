@@ -1,4 +1,3 @@
-import contextlib
 import os
 import tempfile
 import time
@@ -19,12 +18,12 @@ def test_client():
         tmp_file_name = tmp_file.name
     
     test_engine = create_engine(test_db_path, connect_args={"check_same_thread": False})
-    TestSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
+    test_session_local = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
     
     Base.metadata.create_all(bind=test_engine)
     
     def override_get_db():
-        db = TestSessionLocal()
+        db = test_session_local()
         try:
             yield db
         finally:
