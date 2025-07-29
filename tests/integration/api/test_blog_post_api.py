@@ -88,8 +88,8 @@ def test_get_deleted_blog_post_returns_404(test_client):
 
 def test_create_blog_post_invalid_returns_422(test_client):
     payload = {
-        "title": "X",  # muito curto
-        "content": "",  # vazio
+        "title": "X",
+        "content": "", 
         "author": "A"
     }
     response = test_client.post("/blog_posts", json=payload)

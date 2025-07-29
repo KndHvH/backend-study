@@ -6,42 +6,38 @@ import time
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 from api.main import app
-from core.database.db import Base
+from core.database.db import Base, get_db
 
 
 @pytest.fixture(scope="function")
 def test_client():
-    """Cliente de teste que usa banco SQLite temporário"""
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as tmp_file:
         test_db_path = f"sqlite:///{tmp_file.name}"
         tmp_file_name = tmp_file.name
     
-    original_db_path = os.environ.get("DB_PATH")
-    original_environment = os.environ.get("ENVIRONMENT")
-    os.environ["DB_PATH"] = test_db_path
-    os.environ["ENVIRONMENT"] = "test"
-    
-
     test_engine = create_engine(test_db_path, connect_args={"check_same_thread": False})
+    TestSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
+    
     Base.metadata.create_all(bind=test_engine)
+    
+    def override_get_db():
+        db = TestSessionLocal()
+        try:
+            yield db
+        finally:
+            db.close()
+    
+    app.dependency_overrides[get_db] = override_get_db
     
     client = TestClient(app)
     
     yield client
     
+    app.dependency_overrides.clear()
     test_engine.dispose()
-    
-    if original_db_path:
-        os.environ["DB_PATH"] = original_db_path
-    else:
-        os.environ.pop("DB_PATH", None)
-    
-    if original_environment:
-        os.environ["ENVIRONMENT"] = original_environment
-    else:
-        os.environ.pop("ENVIRONMENT", None)
     
     for _ in range(3):
         try:

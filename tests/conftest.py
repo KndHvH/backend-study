@@ -25,6 +25,5 @@ def test_session(test_engine):
 @pytest.fixture
 def test_repository(test_session):
     """Cria um repositório usando a sessão de teste"""
-    repo = BlogPostRepository()
-    repo.session = test_session
+    repo = BlogPostRepository(test_session)
     return repo 

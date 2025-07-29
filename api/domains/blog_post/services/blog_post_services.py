@@ -1,11 +1,13 @@
+from sqlalchemy.orm import Session
+
 from api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
 from api.domains.blog_post.repository.blog_post_repository import BlogPostRepository
 from core.logger import app_logger
 
 
 class BlogPostService:
-    def __init__(self) -> None:
-        self.repository = BlogPostRepository()
+    def __init__(self, session: Session) -> None:
+        self.repository = BlogPostRepository(session)
     
     def create_blog_post(self, blog_post:BlogPostCreate) -> BlogPost:       
         post = self.repository.create_blog_post(blog_post)

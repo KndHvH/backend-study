@@ -5,12 +5,11 @@ from sqlalchemy.orm import Session
 from api.domains.blog_post.entities.blog_post_entity import BlogPostEntity
 from api.domains.blog_post.errors.blog_post_errors import PostNotFoundError
 from api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
-from core.database.db import SessionLocal
 
 
 class BlogPostRepository:
-    def __init__(self):
-        self.session: Session = SessionLocal()
+    def __init__(self, session: Session):
+        self.session = session
 
     def _get_current_datetime(self) -> datetime:
         return datetime.now(UTC)
