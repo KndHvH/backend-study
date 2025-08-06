@@ -2,7 +2,7 @@ from datetime import UTC, datetime
 
 from sqlalchemy import Column, DateTime, Integer, String, Text
 
-from core.database.db import Base
+from app.core.database.db import Base
 
 
 class BlogPostEntity(Base):

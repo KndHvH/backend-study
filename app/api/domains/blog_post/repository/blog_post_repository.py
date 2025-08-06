@@ -2,10 +2,10 @@ from datetime import UTC, datetime
 
 from sqlalchemy.orm import Session
 
-from api.domains.blog_post.entities.blog_post_entity import BlogPostEntity
-from api.domains.blog_post.errors.blog_post_errors import PostNotFoundError
-from api.domains.blog_post.interfaces.blog_post_interface import IBlogPostRepository
-from api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
+from app.api.domains.blog_post.entities.blog_post_entity import BlogPostEntity
+from app.api.domains.blog_post.errors.blog_post_errors import PostNotFoundError
+from app.api.domains.blog_post.interfaces.blog_post_interface import IBlogPostRepository
+from app.api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
 
 
 class BlogPostRepository(IBlogPostRepository):

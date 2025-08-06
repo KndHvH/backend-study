@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
+from app.api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
 
 
 class IBlogPostRepository(Protocol):

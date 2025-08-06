@@ -2,9 +2,9 @@ from datetime import UTC, datetime
 
 import pytest
 
-from api.domains.blog_post.errors.blog_post_errors import PostNotFoundError
-from api.domains.blog_post.models.blog_post_models import BlogPostCreate, BlogPostPatch, BlogPostUpdate
-from api.domains.blog_post.repository.blog_post_repository import BlogPostRepository
+from app.api.domains.blog_post.errors.blog_post_errors import PostNotFoundError
+from app.api.domains.blog_post.models.blog_post_models import BlogPostCreate, BlogPostPatch, BlogPostUpdate
+from app.api.domains.blog_post.repository.blog_post_repository import BlogPostRepository
 
 
 class TestBlogPostRepository:

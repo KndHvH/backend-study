@@ -1,7 +1,6 @@
-
-from api.domains.blog_post.interfaces.blog_post_interface import IBlogPostRepository
-from api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
-from core.logger import app_logger
+from app.api.domains.blog_post.interfaces.blog_post_interface import IBlogPostRepository
+from app.api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
+from app.core.logger import app_logger
 
 
 class BlogPostService:

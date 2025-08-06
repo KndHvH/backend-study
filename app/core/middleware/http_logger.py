@@ -3,8 +3,8 @@ from time import perf_counter
 
 from fastapi import Request
 
-from core.logger import app_logger
-from core.settings import settings
+from app.core.logger import app_logger
+from app.core.settings import settings
 
 
 async def log_request_data(request: Request, call_next):

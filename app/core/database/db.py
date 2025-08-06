@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-from core.settings import settings
+from app.core.settings import settings
 
 engine = create_engine(
     settings.db_path, connect_args={"check_same_thread": False}

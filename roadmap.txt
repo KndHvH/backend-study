@@ -1,75 +1,24 @@
-Fase 1
 
-    Setup do projeto e estrutura inicial
-
-    FastAPI básico: rotas, modelos e validação
-
-    Estrutura em camadas: router, service, repository
-
-    Models Pydantic vs Entidades
-
-    Middleware HTTP customizado (log de requisições)
-
-    Tratamento de erros com handlers
-
-    Logger com Loguru
-
-    ResponseModel padronizado
-
-    Criação do repositório em memória
-
-    Criação de serviços e integração com rotas
-
-    Testes unitários (pytest + factories)
-
-    Cobertura com pytest-cov
-
-    Testes de integração (com repositório fake)
-
-    Simulação de erros e handlers 500
-
-    Configuração de banco real (SQLite com SQLAlchemy)
-
-Fase 2
-
-    Refatoração do repositório para SQLAlchemy
-
-    Fixtures e testes com SQLite em memória
-
-    Separação por domínio com entidades próprias
-
-    Introdução a DDD (Domain-Driven Design)
-
-    Injeção de dependência manual (sem framework)
-
-    Criação de interfaces para os repositórios
-
-    Testes usando repositório mockado (interface)
-
-    CRUD com transações e rollback
-
-    Modularização de settings (dev/prod/test)
-
-    Introdução ao Docker para ambiente isolado
-
-Fase 3
-
-    Introdução ao Alembic (migrations)
-
-    Criação de usuários com hash de senha
-
-    Login com JWT
-
-    Rotas protegidas com dependências
-
-    Versionamento de API
-
-    Organização de domínio por módulos
-
-    Redis e cache básico
-
-    Background tasks e filas (Celery ou FastAPI background)
-
-    Webhooks e notificações simuladas
-
-    Observabilidade (log extra, trace, request_id)
+-13 será sobre testes com Pytest. Você vai aprender a escrever testes unitários para os serviços e testes de integração usando o TestClient da FastAPI, garantindo que sua aplicação funcione como esperado.
+-14 vai trocar o repositório em memória por um banco de verdade, como SQLite ou PostgreSQL, aprendendo a conectar o projeto com um banco relacional.
+-15 aprenderá a usar um ORM, como SQLModel ou SQLAlchemy, para mapear classes para tabelas, evitando SQL bruto e tornando o código mais limpo.
+-16 aprenderá o básico de Docker, criando um Dockerfile, docker-compose e configurando tudo para rodar em containers.
+-17 organizará seu projeto por ambientes, separando variáveis com .env e pydantic-settings, deixando tudo configurável entre dev e produção.
+-18 integrará o Redis como cache para melhorar performance de leitura, usando TTL e testando com rotas reais.
+-19 aprenderá o conceito de filas usando Redis + RQ, e criará um job simples assíncrono (como simular um e-mail sendo enviado).
+-20 vai aplicar isso numa tarefa mais real, como uma inferência de IA ou uma simulação de processamento mais pesado, rodando com worker separado.
+-21 criará um webhook assíncrono, simulando comunicação entre dois serviços onde um chama e o outro responde depois.
+-22 aprenderá a implementar autenticação com JWT, protegendo rotas e exigindo tokens válidos.
+-23 adicionará autorização com RBAC, definindo permissões por usuário ou papel, e controlando o que pode ser acessado.
+-24 vai implementar versionamento de API, criando estruturas como /v1 e /v2 para manter compatibilidade futura.
+-25 simulará a criação de um microserviço, movendo parte do sistema para um segundo app FastAPI e integrando via HTTP.
+-26 criará um fluxo de webhook entre microserviços, com chamadas assíncronas e troca de dados entre sistemas.
+-27 aprenderá a usar GitHub Actions para rodar CI: executar Ruff, rodar testes e verificar cobertura automaticamente a cada push.
+-28 aprenderá a subir sua aplicação com Docker no Railway, Render ou EC2.
+-29 aprenderá a criar endpoints de health check e expor métricas como tempo de resposta e status.
+-30 criará o checklist final para produção, organizando logs, limpeza de dependências, .env, estrutura de pastas e documentação mínima.
+-31 aprenderá como usar o Datadog para monitoramento real, com logs, métricas e rastreamento de requests.
+-32 começará a fase de refatoração, com Clean Code, aprendendo a nomear melhor funções e variáveis e remover ruído.
+-33 verá os princípios SOLID aplicados em Python, entendendo como dividir responsabilidade, respeitar dependências e facilitar extensões.
+-34 aplicará KISS e DRY, removendo duplicações e simplificando a lógica, focando em clareza e manutenção. Por fim,
+-35 fará uma refatoração final completa, revisando tudo o que construiu com base nas boas práticas vistas.

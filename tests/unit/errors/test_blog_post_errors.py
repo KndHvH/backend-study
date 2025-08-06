@@ -1,5 +1,4 @@
-
-from api.domains.blog_post.errors.blog_post_errors import PostAlreadyExistsError, PostError, PostNotFoundError
+from app.api.domains.blog_post.errors.blog_post_errors import PostAlreadyExistsError, PostError, PostNotFoundError
 
 
 class TestPostError:

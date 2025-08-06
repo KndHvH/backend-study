@@ -3,7 +3,7 @@ import sys
 
 from loguru import logger
 
-from core.settings import settings
+from app.core.settings import settings
 
 LOGS_DIR = "logs"
 os.makedirs(LOGS_DIR, exist_ok=True)    
