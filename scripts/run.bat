@@ -1,2 +1,2 @@
 @echo off
-uv run uvicorn api.main:app --reload
+docker run -p 8000:8000 api-image
