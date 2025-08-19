@@ -1,12 +1,11 @@
-import os
 
-from dotenv import load_dotenv
-from pydantic import BaseModel
+from pydantic_settings import BaseSettings
 
-load_dotenv()
-
-class Settings(BaseModel):
-    environment: str = os.getenv("ENVIRONMENT", "dev")
-    db_path: str = os.getenv("DB_PATH", "sqlite:///./core/database/data.db")
+class Settings(BaseSettings):
+    environment: str = "dev"
+    db_path: str = "sqlite:///./core/database/data.db"
     
+    class Config:
+            env_file = ".env"
+
 settings = Settings()
