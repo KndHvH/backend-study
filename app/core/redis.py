@@ -21,7 +21,7 @@ class RedisCache:
         data = self.redis_client.get(key)
         return json.loads(data) if data else None
 
-    def set_cache(self, key: str, value: dict, ttl: int = 60):
+    def set_cache(self, key: str, value: dict, ttl: int = 360):
         self.redis_client.setex(key, ttl, json.dumps(value))
 
     def delete(self, key):
