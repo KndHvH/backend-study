@@ -1,6 +1,6 @@
 import pytest
 
-from app.api.domains.blog_post.models.blog_post_models import BlogPostBaseModel, BlogPostPatch
+from app.api.blog_post.models.blog_post_models import BlogPostBaseModel, BlogPostPatch
 
 
 class TestBlogPostBaseModel:

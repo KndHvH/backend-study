@@ -3,10 +3,10 @@ from typing import Annotated
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.api.domains.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
-from app.api.domains.blog_post.models.response_models import ResponseModel
-from app.api.domains.blog_post.repository.blog_post_repository import BlogPostRepository
-from app.api.domains.blog_post.services.blog_post_services import BlogPostService
+from app.api.blog_post.models.blog_post_models import BlogPost, BlogPostCreate, BlogPostPatch, BlogPostUpdate
+from app.api.blog_post.models.response_models import ResponseModel
+from app.api.blog_post.repository.blog_post_repository import BlogPostRepository
+from app.api.blog_post.services.blog_post_services import BlogPostService
 from app.core.database.db import get_db
 from app.core.logger import app_logger
 

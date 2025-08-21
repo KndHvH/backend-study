@@ -9,3 +9,8 @@ services:
     environment:
       - ENV=prod
       - DB_PATH=sqlite:///./app/core/database/data.db
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"

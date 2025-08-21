@@ -2,7 +2,7 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.api.domains.blog_post.repository.blog_post_repository import BlogPostRepository
+from app.api.blog_post.repository.blog_post_repository import BlogPostRepository
 from app.core.database.db import Base
 
 

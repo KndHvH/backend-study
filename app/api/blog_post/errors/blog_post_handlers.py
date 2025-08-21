@@ -2,8 +2,8 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from app.api.domains.blog_post.errors.blog_post_errors import PostError
-from app.api.domains.blog_post.models.response_models import ResponseModel
+from app.api.blog_post.errors.blog_post_errors import PostError
+from app.api.blog_post.models.response_models import ResponseModel
 from app.core.logger import app_logger
 
 

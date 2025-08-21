@@ -9,6 +9,7 @@ dependencies = [
     "loguru>=0.7.3",
     "pydantic-settings>=2.10.1",
     "python-dotenv>=1.1.1",
+    "redis>=6.4.0",
     "sqlalchemy>=2.0.41",
     "typing>=3.10.0.0",
     "uvicorn>=0.34.3",

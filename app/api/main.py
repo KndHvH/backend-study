@@ -2,8 +2,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.api.domains.blog_post.errors.blog_post_handlers import setup_error_handlers
-from app.api.domains.blog_post.routes import blog_post_routes, root
+from app.api.blog_post.errors.blog_post_handlers import setup_error_handlers
+from app.api.blog_post.routes import blog_post_routes, root
 from app.core.database.make_db import make_db
 from app.core.middleware.http_logger import log_request_data
 
